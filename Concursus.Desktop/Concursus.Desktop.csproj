@@ -23,4 +23,9 @@
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.6" />
     <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
   </ItemGroup>
+
+
+  <ItemGroup>
+    <ProjectReference Include="..\Concursus.Library\Concursus.Library.csproj" />
+  </ItemGroup>
 </Project>
