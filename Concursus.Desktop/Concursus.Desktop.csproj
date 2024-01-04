@@ -11,21 +11,28 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
+    <Folder Include="SukiUI\" />
   </ItemGroup>
 
 
   <ItemGroup>
     <PackageReference Include="Avalonia" Version="11.0.6" />
     <PackageReference Include="Avalonia.Desktop" Version="11.0.6" />
-    <PackageReference Include="Avalonia.Themes.Fluent" Version="11.0.6" />
     <PackageReference Include="Avalonia.Fonts.Inter" Version="11.0.6" />
     <!--Condition below is needed to remove Avalonia.Diagnostics package from build output in Release configuration.-->
     <PackageReference Condition="'$(Configuration)' == 'Debug'" Include="Avalonia.Diagnostics" Version="11.0.6" />
-    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.1" />
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.2.2" />
+    <PackageReference Include="ReactiveUI" Version="19.5.39" />
   </ItemGroup>
 
 
   <ItemGroup>
     <ProjectReference Include="..\Concursus.Library\Concursus.Library.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="SukiUI">
+      <HintPath>SukiUI\netstandard2.0\SukiUI.dll</HintPath>
+    </Reference>
   </ItemGroup>
 </Project>

@@ -1,16 +1,24 @@
-<Window
+<suki:SukiWindow
     x:Class="Concursus.Desktop.Views.MainWindow"
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:suki="using:SukiUI.Controls"
     xmlns:vm="using:Concursus.Desktop.ViewModels"
     Title="Concursus"
-    d:DesignHeight="450"
-    d:DesignWidth="800"
+    Width="960"
+    Height="540"
+    MinWidth="960"
+    MinHeight="540"
     x:DataType="vm:MainWindowViewModel"
     Icon="/Assets/icon.ico"
     mc:Ignorable="d">
+    <suki:SukiWindow.LogoContent>
+        <Image
+            Height="16"
+            Source="/Assets/icon.ico" />
+    </suki:SukiWindow.LogoContent>
 
     <Design.DataContext>
         <!--
@@ -25,4 +33,4 @@
         VerticalAlignment="Center"
         Text="{Binding Greeting}" />
 
-</Window>
+</suki:SukiWindow>
