@@ -3,6 +3,7 @@
     xmlns="https://github.com/avaloniaui"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:i="https://github.com/projektanker/icons.avalonia"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:suki="using:SukiUI.Controls"
     xmlns:vm="using:Concursus.Desktop.ViewModels"
@@ -28,9 +29,70 @@
         <vm:MainWindowViewModel />
     </Design.DataContext>
 
-    <TextBlock
-        HorizontalAlignment="Center"
-        VerticalAlignment="Center"
-        Text="{Binding Greeting}" />
+    <suki:SukiSideMenu HeaderContentOverlapsToggleButton="True">
+        <suki:SukiSideMenu.Styles>
+            <Style Selector="i|Icon">
+                <Setter Property="FontSize" Value="24" />
+                <Setter Property="Foreground" Value="{DynamicResource SukiText}" />
+            </Style>
+        </suki:SukiSideMenu.Styles>
 
+        <suki:SukiSideMenu.HeaderContent>
+            <Grid Height="96">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition
+                        Height="auto"
+                        MaxHeight="48" />
+                </Grid.RowDefinitions>
+                <Image
+                    Grid.RowSpan="2"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Source="{Binding CurrentGame, Converter={StaticResource ToGameAsset}, ConverterParameter=artwork.jpg}"
+                    Stretch="UniformToFill" />
+                <TextBlock
+                    Grid.Row="2"
+                    Padding="4,2"
+                    FontSize="16"
+                    Text="{Binding CurrentGame.Name}"
+                    TextTrimming="CharacterEllipsis"
+                    TextWrapping="Wrap">
+                    <TextBlock.Background>
+                        <LinearGradientBrush StartPoint="0%,0%" EndPoint="100%,100%">
+                            <LinearGradientBrush.GradientStops>
+                                <GradientStop Offset="0" Color="#cc000000" />
+                                <GradientStop Offset="0.75" Color="#cc000000" />
+                                <GradientStop Offset="1" Color="#1a000000" />
+                            </LinearGradientBrush.GradientStops>
+                        </LinearGradientBrush>
+                    </TextBlock.Background>
+                </TextBlock>
+            </Grid>
+        </suki:SukiSideMenu.HeaderContent>
+
+        <suki:SukiSideMenu.Items>
+            <suki:SukiSideMenuItem
+                Header="Home"
+                PageContent="{Binding Home, Converter={StaticResource InContentPresenter}}">
+                <suki:SukiSideMenuItem.Icon>
+                    <i:Icon Value="fa-home" />
+                </suki:SukiSideMenuItem.Icon>
+            </suki:SukiSideMenuItem>
+            <suki:SukiSideMenuItem
+                Header="Mods"
+                PageContent="{Binding Mods, Converter={StaticResource InContentPresenter}}">
+                <suki:SukiSideMenuItem.Icon>
+                    <i:Icon Value="fa-file-code" />
+                </suki:SukiSideMenuItem.Icon>
+            </suki:SukiSideMenuItem>
+            <suki:SukiSideMenuItem
+                Header="Settings"
+                PageContent="{Binding Settings, Converter={StaticResource InContentPresenter}}">
+                <suki:SukiSideMenuItem.Icon>
+                    <i:Icon Value="fa-gear" />
+                </suki:SukiSideMenuItem.Icon>
+            </suki:SukiSideMenuItem>
+        </suki:SukiSideMenu.Items>
+    </suki:SukiSideMenu>
 </suki:SukiWindow>
